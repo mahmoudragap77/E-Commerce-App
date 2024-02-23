@@ -12,7 +12,11 @@
         <item name="android:navigationBarColor">@color/white</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
         <item name="colorPrimaryDark">@color/primaryColor</item>
-        <item name="android:windowBackground">@drawable/laucher_screen</item>
+        <item name="android:windowBackground">@drawable/launcher_screen</item>
     </style>
+
+
+
+
 
 </resources>
