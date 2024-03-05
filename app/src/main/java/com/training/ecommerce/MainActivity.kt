@@ -6,14 +6,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnticipateInterpolator
+import android.widget.Button
+import android.widget.TextView
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
+import com.training.ecommerce.utils.CrashlyticsUtils
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         initSplash()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
     }
 
     private fun initSplash() {
