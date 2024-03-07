@@ -1,6 +1,7 @@
 package com.training.ecommerce.ui.home
 
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
