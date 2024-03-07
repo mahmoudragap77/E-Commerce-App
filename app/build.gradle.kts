@@ -73,4 +73,11 @@ dependencies {
     // Feature module Support
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
 
+    //data store
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    //courotine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
+
+
 }
