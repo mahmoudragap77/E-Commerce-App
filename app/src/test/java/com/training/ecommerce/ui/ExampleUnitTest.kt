@@ -1,4 +1,4 @@
-package com.training.ecommerce
+package com.training.ecommerce.ui
 
 import org.junit.Test
 

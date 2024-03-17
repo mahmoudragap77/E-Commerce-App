@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.training.ecommerce.R
+import com.training.ecommerce.data.datasource.datastore.UserPreferenceDataSource
 import com.training.ecommerce.data.repository.user.UserDataStoreRepositoryImpl
 import com.training.ecommerce.databinding.FragmentLoginBinding
 import com.training.ecommerce.ui.login.viewmodel.LoginViewModel
@@ -14,7 +15,7 @@ import com.training.ecommerce.ui.login.viewmodel.LoginViewModel
 class LoginFragment : Fragment() {
 
     val loginViewModel: LoginViewModel by lazy {
-        LoginViewModel(userPrefs = UserDataStoreRepositoryImpl(requireActivity()))
+        LoginViewModel(userPrefs = UserDataStoreRepositoryImpl(UserPreferenceDataSource( requireActivity())))
     }
 
     lateinit var binding: FragmentLoginBinding
