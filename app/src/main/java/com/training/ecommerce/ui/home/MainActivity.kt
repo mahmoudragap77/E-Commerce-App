@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.AnticipateInterpolator
 import androidx.activity.viewModels
@@ -14,25 +15,32 @@ import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.training.ecommerce.R
+import com.training.ecommerce.data.datasource.datastore.UserPreferenceDataSource
 import com.training.ecommerce.data.repository.user.UserDataStoreRepositoryImpl
 import com.training.ecommerce.data.repository.user.UserPreferenceRepository
 import com.training.ecommerce.ui.common.viewmodel.UserViewModel
 import com.training.ecommerce.ui.common.viewmodel.UserViewModelFactory
 import com.training.ecommerce.ui.login.AuthActivity
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
 
     private val userViewModel :UserViewModel by viewModels(){
-        UserViewModelFactory(UserDataStoreRepositoryImpl(this@MainActivity))
+        UserViewModelFactory(UserDataStoreRepositoryImpl(UserPreferenceDataSource(this)))
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         initSplash()
         super.onCreate(savedInstanceState)
-        lifecycleScope.launch(Main) {
+
+
+        runBlocking {
+            delay(3000L)
         val isLoggedIn = userViewModel.isUserLoggedIn().first()
+            Log.d(TAG,"onCreate: isLoggedIn: $isLoggedIn")
             if (isLoggedIn){
                 setContentView(R.layout.activity_main)
             }else{
@@ -79,5 +87,9 @@ class MainActivity : AppCompatActivity() {
         {
             setTheme(R.style.Theme_ECommerce)
         }
+    }
+
+    companion object{
+        const val TAG ="MAIN_ACTIVITY"
     }
 }
